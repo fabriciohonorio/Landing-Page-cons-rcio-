@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FABRICIOESPECIALISTACONSORCIO </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            font-size: 18px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Realize seu Sonho </h1>
+        <p>Preencha os dados abaixo para receber atendimento personalizado pelo WhatsApp!</p>
+        
+        <form id="leadForm">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" placeholder="Seu Nome" required>
+            
+            <label for="segment">Segmento:</label>
+            <select id="segment" required>
+                <option value="" disabled selected>Escolha uma opção</option>
+                <option value="Imóvel">Imóvel</option>
+                <option value="Veículo">Veículo</option>
+            </select>
+            
+            <label for="phone">Telefone (WhatsApp):</label>
+            <input type="tel" id="phone" placeholder="Seu WhatsApp (com DDD)" required>
+            
+            <button type="button" onclick="sendToWhatsApp()">Enviar pelo WhatsApp</button>
+        </form>
+    </div>
+
+    <script>
+        function sendToWhatsApp() {
+            const name = document.getElementById("name").value;
+            const segment = document.getElementById("segment").value;
+            const phone = document.getElementById("phone").value;
+
+            if (name && segment && phone) {
+                // Número do WhatsApp para receber as mensagens
+                const whatsappNumber = "5541997925357"; // Insira o número com DDI e DDD
+
+                // Mensagem padrão
+                const message = `Olá, meu nome é ${name}. Tenho interesse em consórcio de ${segment}. Meu número de WhatsApp é ${phone}.`;
+
+                // URL para WhatsApp
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+                // Redireciona para o WhatsApp
+                window.open(whatsappURL, "_blank");
+            } else {
+                alert("Por favor, preencha todos os campos!");
+            }
+        }
+    </script>
+</body>
+</html>
